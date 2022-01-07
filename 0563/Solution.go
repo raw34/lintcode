@@ -1,5 +1,19 @@
 package _0563
 
+import "fmt"
+
+/*
+nums = [1,2,3,3,7]
+target = 7
+dp = [
+    [1, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 2, 1, 1, 1, 0],
+    [1, 1, 1, 3, 2, 2, 3, 1],
+    [1, 1, 1, 3, 2, 2, 3, 2],
+]
+*/
 func backPackV(nums []int, target int) int {
     n := len(nums)
     dp := make([][]int, n+1)
@@ -17,10 +31,16 @@ func backPackV(nums []int, target int) int {
             }
         }
     }
+    fmt.Println(dp)
 
     return dp[n][target]
 }
 
+/*
+nums = [1,2,3,3,7]
+target = 7
+dp = [1, 1, 1, 3, 2, 2, 3, 2]
+*/
 func backPackV2(nums []int, target int) int {
     n := len(nums)
     dp := make([]int, target+1)
