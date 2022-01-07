@@ -1,7 +1,5 @@
 package _0563
 
-import "fmt"
-
 /*
 nums = [1,2,3,3,7]
 target = 7
@@ -31,7 +29,6 @@ func backPackV(nums []int, target int) int {
             }
         }
     }
-    fmt.Println(dp)
 
     return dp[n][target]
 }
