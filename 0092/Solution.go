@@ -38,8 +38,10 @@ func backPack2(m int, A []int) int {
         }
         return a
     }
+    n := len(A)
     dp := make([]int, m+1)
-    for _, a := range A {
+    for i := 1; i < n+1; i++ {
+        a := A[i-1]
         for j := m; j >= a; j-- {
             dp[j] = max(dp[j], dp[j-a]+a)
         }
