@@ -51,9 +51,8 @@ func backPackIII2(A []int, V []int, m int) int {
     for i := 1; i < n+1; i++ {
         a, v := A[i-1], V[i-1]
         for j := 0; j < m+1; j++ {
-            if j < a {
-                dp[i][j] = dp[i-1][j]
-            } else {
+            dp[i][j] = dp[i-1][j]
+            if j >= a {
                 dp[i][j] = max(dp[i-1][j], dp[i][j-a]+v)
             }
         }
