@@ -56,11 +56,9 @@ func backPackVII2(n int, prices []int, weight []int, amounts []int) int {
     dp := make([]int, n+1)
     for i := 1; i < m+1; i++ {
         p, w, a := prices[i-1], weight[i-1], amounts[i-1]
-        for j := n; j >= p; j-- {
-            for k := 0; k <= a; k++ {
-                if j >= p*k {
-                    dp[j] = max(dp[j], dp[j-p*k]+w*k)
-                }
+        for k := 1; k <= a; k++ {
+            for j := n; j >= p; j-- {
+                dp[j] = max(dp[j], dp[j-p]+w)
             }
         }
     }
