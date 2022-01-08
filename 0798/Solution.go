@@ -27,7 +27,7 @@ func backPackVII(n int, prices []int, weight []int, amounts []int) int {
         p, w, a := prices[i-1], weight[i-1], amounts[i-1]
         for j := 0; j < n+1; j++ {
             dp[i][j] = dp[i-1][j]
-            for k := 1; k <= a; k++ {
+            for k := 0; k <= a; k++ {
                 if j >= p*k {
                     dp[i][j] = max(dp[i][j], dp[i-1][j-p*k]+w*k)
                 }
@@ -57,7 +57,7 @@ func backPackVII2(n int, prices []int, weight []int, amounts []int) int {
     for i := 1; i < m+1; i++ {
         p, w, a := prices[i-1], weight[i-1], amounts[i-1]
         for j := n; j >= p; j-- {
-            for k := 1; k <= a; k++ {
+            for k := 0; k <= a; k++ {
                 if j >= p*k {
                     dp[j] = max(dp[j], dp[j-p*k]+w*k)
                 }
