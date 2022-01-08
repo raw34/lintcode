@@ -26,9 +26,35 @@ func backPackIII(A []int, V []int, m int) int {
     }
     for i := 1; i < n+1; i++ {
         a, v := A[i-1], V[i-1]
-        for j := a; j < m+1; j++ {
+        for j := 0; j < m+1; j++ {
             for k := 0; a*k <= j; k++ {
                 dp[i][j] = max(dp[i][j], dp[i-1][j-a*k]+v*k)
+            }
+        }
+    }
+
+    return dp[n][m]
+}
+
+func backPackIII2(A []int, V []int, m int) int {
+    max := func(a, b int) int {
+        if a < b {
+            return b
+        }
+        return a
+    }
+    n := len(A)
+    dp := make([][]int, n+1)
+    for i := 0; i < n+1; i++ {
+        dp[i] = make([]int, m+1)
+    }
+    for i := 1; i < n+1; i++ {
+        a, v := A[i-1], V[i-1]
+        for j := 0; j < m+1; j++ {
+            if j < a {
+                dp[i][j] = dp[i-1][j]
+            } else {
+                dp[i][j] = max(dp[i-1][j], dp[i][j-a]+v)
             }
         }
     }
@@ -42,7 +68,7 @@ V = [1, 5, 2, 4]
 m = 10
 dp = [0, 0, 1, 5, 5, 6, 10, 10, 11, 15, 15]
 */
-func backPackIII2(A []int, V []int, m int) int {
+func backPackIII3(A []int, V []int, m int) int {
     max := func(a, b int) int {
         if a < b {
             return b
