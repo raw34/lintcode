@@ -17,7 +17,7 @@ func backPackX(n int) int {
         p := prices[i-1]
         for j := 0; j < n+1; j++ {
             dp[i][j] = dp[i-1][j]
-            for k := 0; p*k < j; k++ {
+            for k := 0; p*k <= j; k++ {
                 dp[i][j] = max(dp[i][j], dp[i][j-p*k]+p*k)
             }
         }
@@ -38,10 +38,8 @@ func backPackX2(n int) int {
     dp := make([]int, n+1)
     for i := 1; i < m+1; i++ {
         p := prices[i-1]
-        for j := n; j >= p; j-- {
-            for k := 0; p*k < j; k++ {
-                dp[j] = max(dp[j], dp[j-p]+p)
-            }
+        for j := p; j < n+1; j++ {
+            dp[j] = max(dp[j], dp[j-p]+p)
         }
     }
 
