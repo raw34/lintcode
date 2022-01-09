@@ -1,7 +1,6 @@
 package _800
 
 import (
-    "fmt"
     "math"
 )
 
@@ -31,7 +30,6 @@ func backpackIX(n int, prices []int, probability []float64) float64 {
             }
         }
     }
-    fmt.Println(dp)
 
     return dp[m][n]
 }
